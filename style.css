@@ -1,0 +1,20 @@
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    justify-items: center;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.header {
+    text-align: center;
+}
+
+.card {
+    border: 1px solid red;
+    padding: 20px;
+}
