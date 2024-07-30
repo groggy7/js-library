@@ -12,21 +12,24 @@
         <h1 class="header">THE ODIN LIBRARY</h1>
         <div class="library">
             <dialog class="modal">
-                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2 class="modal-title">Add New Book</h2>
+                    <span class="close">&times;</span>
+                </div>
                 <form class="book-form" method="dialog">
                     <fieldset>
                         <label for="book-name">Book name</label>
                         <input type="text" id="book-name" required>
-        
+                        
                         <label for="author">Author's full name</label>
                         <input type="text" id="author" required>
-        
-                        <label for="year">Release date </label>
+                        
+                        <label for="year">Release date</label>
                         <input type="date" id="year" required>
-        
+                        
                         <label for="pages">Number of pages</label>
                         <input type="number" id="pages" required>
-        
+                        
                         <button type="submit">Add Book</button>
                     </fieldset>
                 </form>

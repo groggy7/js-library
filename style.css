@@ -2,6 +2,13 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .container {
@@ -37,9 +44,122 @@ body {
     background-color: #30344c;
     color: #c0c3d7;
     border-radius: 10px;
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.book-form {
-    width: min-content;
+.card p {
+    margin: 3px;
+}
+
+.book-cover {
+    width: 200px;
+}
+
+#openModal {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#openModal:hover {
+    background-color: #45a049;
+}
+
+.modal {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.close {
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.book-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.book-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.book-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.book-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.book-form button:hover {
+    background-color: #45a049;
+}
+
+.delete-book {
+    border: none;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    display: block;
+    margin: 15px auto 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.delete-book:hover {
+    background-color: rgba(255, 0, 0, 0.8);
 }
