@@ -1,4 +1,4 @@
-## The Odin Project Project Library.
+## The Odin Project: Library Project.
 
 This project is written in HTML5, CSS and Javascript.
 
