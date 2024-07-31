@@ -26,23 +26,22 @@ bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = document.getElementById("name").value;
     const author = document.getElementById("author").value;
-    const year = document.getElementById("author").value;
+    const year = document.getElementById("year").value;
     const pages = document.getElementById("pages").value;
 
     addBook(new Book(name, author, year, pages));
-    display();
     modal.close();
+    resetForm();
+});
 
-    document.getElementById("name").value = '';
-    document.getElementById("author").value = '';
-    document.getElementById("year").value = '';
-    document.getElementById("pages").value = '';
-    }
-)
+function resetForm() {
+    ['name', 'author', 'year', 'pages'].forEach(id => {
+        document.getElementById(id).value = '';
+    });
+}
 
 openModal.addEventListener("click", () => {
     modal.showModal();
-
 });
 
 closeBtn.addEventListener("click", () => {
@@ -72,28 +71,26 @@ function display() {
         <p>Book's year: ${book.year}</p>
         <p>Book's page: ${book.pages}</p>
         <button class="delete-book btn" data-id="${book.id}">Delete the book</button>
-        <button class="toggle-read btn" data-id="${book.id}">${book.read ? "Read": "Not Read"}</button>
+        <button class="toggle-read btn" data-id="${book.id}" 
+        style="background-color: ${book.read ? 'green' : 'red'}">${book.read ? "Read" : "Not Read"}
+        </button>
       </div>
     `).join('');
     addEventListeners();
-    updateToggleButtons();
-  }
+}
 display();
 
 function addBook(book) {
-    const newBook = new Book(book.name, book.author, book.year, book.pages);
-    myLibrary.push(newBook);
+    myLibrary.push(book);
     display();
 }
 
 function deleteBook(id) {
     const index = myLibrary.findIndex(book => book.id === parseInt(id));
-    if (index === -1) {
-        console.log('Book not found');
-        return;
+    if (index !== -1) {
+        myLibrary.splice(index, 1);
+        display();
     }
-    myLibrary.splice(index, 1);
-    display();
 }
 
 function addEventListeners() {
@@ -114,13 +111,4 @@ function addEventListeners() {
             display();
         })
     })
-}
-
-function updateToggleButtons() {
-    const toggleButtons = document.querySelectorAll(".toggle-read");
-    toggleButtons.forEach((button) => {
-        const bookId = button.dataset.id;
-        const book = myLibrary.find(book => book.id === parseInt(bookId));
-        button.style.backgroundColor = book.read ? "green" : "red";
-    });
 }
