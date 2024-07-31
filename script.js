@@ -16,8 +16,28 @@ const openModal = document.querySelector("#openModal");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close");;
 
+const bookForm = document.querySelector(".book-form");
+bookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const author = document.getElementById("author").value;
+    const year = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+
+    addBook(new Book(name, author, year, pages));
+    display();
+    modal.close();
+
+    document.getElementById("name").value = '';
+    document.getElementById("author").value = '';
+    document.getElementById("year").value = '';
+    document.getElementById("pages").value = '';
+    }
+)
+
 openModal.addEventListener("click", () => {
     modal.showModal();
+
 });
 
 closeBtn.addEventListener("click", () => {
@@ -52,6 +72,12 @@ function display() {
     addDeleteListeners();
   }
 display();
+
+function addBook(book) {
+    const newBook = new Book(book.name, book.author, book.year, book.pages);
+    myLibrary.push(newBook);
+    display();
+}
 
 function deleteBook(id) {
     const index = myLibrary.findIndex(book => book.id === parseInt(id));
