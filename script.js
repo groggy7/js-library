@@ -5,6 +5,11 @@ function Book(name, author, year, pages) {
   this.author = author;
   this.year = year;
   this.pages = pages;
+  this.read = false;
+}
+
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read
 }
 
 const myLibrary = [
@@ -14,7 +19,7 @@ const myLibrary = [
 
 const openModal = document.querySelector("#openModal");
 const modal = document.querySelector(".modal");
-const closeBtn = document.querySelector(".close");;
+const closeBtn = document.querySelector(".close");
 
 const bookForm = document.querySelector(".book-form");
 bookForm.addEventListener("submit", (e) => {
@@ -66,10 +71,12 @@ function display() {
         <p>Book's author: ${book.author}</p>
         <p>Book's year: ${book.year}</p>
         <p>Book's page: ${book.pages}</p>
-        <button class="delete-book" data-id="${book.id}">Delete the book</button>
+        <button class="delete-book btn" data-id="${book.id}">Delete the book</button>
+        <button class="toggle-read btn" data-id="${book.id}">${book.read ? "Read": "Not Read"}</button>
       </div>
     `).join('');
-    addDeleteListeners();
+    addEventListeners();
+    updateToggleButtons();
   }
 display();
 
@@ -89,11 +96,31 @@ function deleteBook(id) {
     display();
 }
 
-function addDeleteListeners() {
+function addEventListeners() {
     const deleteButtons = document.querySelectorAll('.delete-book');
+    const toggleButtons = document.querySelectorAll(".toggle-read");
+
     deleteButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
             deleteBook(event.target.dataset.id);
         });
+    });
+
+    toggleButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            const bookId = event.target.dataset.id;
+            const book = myLibrary.find(book => book.id === parseInt(bookId));
+            book.toggleReadStatus();
+            display();
+        })
+    })
+}
+
+function updateToggleButtons() {
+    const toggleButtons = document.querySelectorAll(".toggle-read");
+    toggleButtons.forEach((button) => {
+        const bookId = button.dataset.id;
+        const book = myLibrary.find(book => book.id === parseInt(bookId));
+        button.style.backgroundColor = book.read ? "green" : "red";
     });
 }

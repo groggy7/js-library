@@ -161,7 +161,7 @@ body {
     background-color: #45a049;
 }
 
-.delete-book {
+.btn {
     border: none;
     background-color: red;
     color: white;
@@ -175,6 +175,6 @@ body {
     transition: background-color 0.2s;
 }
 
-.delete-book:hover {
+.btn:hover {
     background-color: rgba(255, 0, 0, 0.8);
 }
