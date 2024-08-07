@@ -1,15 +1,17 @@
-let nextId = 0;
-function Book(name, author, year, pages) {
-  this.id = nextId++;
-  this.name = name;
-  this.author = author;
-  this.year = year;
-  this.pages = pages;
-  this.read = false;
-}
+class Book {
+    static id = 0;
+    constructor(name, author, year, pages) {
+        this.id = Book.id++;
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.pages = pages;
+        this.read = false;
+    }
 
-Book.prototype.toggleReadStatus = function() {
-    this.read = !this.read
+    toggleReadStatus() {
+        this.read = !this.read;
+    }
 }
 
 const myLibrary = [
